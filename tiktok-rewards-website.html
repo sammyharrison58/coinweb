@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TikTok LIVE Rewards</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+
+</head>
+<body>
+
+
+    <div class="top-nav">
+        <div class="top-nav-inner">
+            <div class="logo">
+                <div class="logo-icon">♪</div>
+                <span>LIVE Rewards</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-page="dashboard">Home</button>
+                <button class="nav-btn" data-page="exchange">Exchange</button>
+                <button class="nav-btn" data-page="transactions">History</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+        <div class="page active" id="page-dashboard">
+            <div class="balance-card">
+                <div class="balance-label">TikTok Coins Balance</div>
+                <div class="balance-amount" id="dashBalance">$8,027,116.56</div>
+                <div class="balance-approx" id="dashApprox">≈ 661,300,811 Coins</div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="action-btn" onclick="goTo('exchange')">
+                    <div class="action-icon">💱</div>
+                    <div class="action-label">Exchange</div>
+                </div>
+                <div class="action-btn" onclick="goTo('withdraw')">
+                    <div class="action-icon">💸</div>
+                    <div class="action-label">Withdraw</div>
+                </div>
+                <div class="action-btn" onclick="goTo('transactions')">
+                    <div class="action-icon">📋</div>
+                    <div class="action-label">History</div>
+                </div>
+                <div class="action-btn" onclick="alert('Support coming soon')">
+                    <div class="action-icon">💬</div>
+                    <div class="action-label">Support</div>
+                </div>
+            </div>
+
+            <div class="section-title">Recent Exchanges</div>
+            <div class="recent-list" id="recentList">
+                <div class="recent-item">
+                    <div class="recent-left">
+                        <div class="recent-user">@daniel990</div>
+                        <div class="recent-time">25/09/2026, 23:35</div>
+                    </div>
+                    <div class="recent-amount">-250,000 Coins</div>
+                </div>
+                <div class="recent-item">
+                    <div class="recent-left">
+                        <div class="recent-user">@aneedha9</div>
+                        <div class="recent-time">25/09/2026, 23:36</div>
+                    </div>
+                    <div class="recent-amount">-915,000 Coins</div>
+                </div>
+                <div class="recent-item">
+                    <div class="recent-left">
+                        <div class="recent-user">@shawn99</div>
+                        <div class="recent-time">25/09/2026, 23:36</div>
+                    </div>
+                    <div class="recent-amount">-150,000 Coins</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page" id="page-exchange">
+            <div class="exchange-balance">
+                <div class="label">Available to Exchange</div>
+                <div class="amount" id="exBalance">$8,027,116.56</div>
+                <div class="approx" id="exApprox">≈ 661,300,811 Coins</div>
+            </div>
+
+            <div class="username-box">
+                <label>TikTok username</label>
+                <input type="text" class="username-input" id="usernameInput" placeholder="@ your TikTok handle">
+                <div class="username-error" id="usernameError">âš  Please enter your TikTok username to continue.</div>
+            </div>
+
+            <div class="section-title">Exchange earnings for Coins</div>
+            <div class="coin-options">
+                <div class="coin-option" data-coins="250" data-price="3.03">
+                    <div class="coin-left">
+                        <div class="coin-icon">C</div>
+                        <div class="coin-amount">250 coins</div>
+                    </div>
+                    <div class="coin-price">$3.03</div>
+                </div>
+                <div class="coin-option" data-coins="500" data-price="6.07">
+                    <div class="coin-left">
+                        <div class="coin-icon">C</div>
+                        <div class="coin-amount">500 coins</div>
+                    </div>
+                    <div class="coin-price">$6.07</div>
+                </div>
+                <div class="coin-option" data-coins="15000" data-price="182.04">
+                    <div class="coin-left">
+                        <div class="coin-icon">C</div>
+                        <div class="coin-amount">15,000 coins</div>
+                    </div>
+                    <div class="coin-price">$182.04</div>
+                </div>
+                <div class="coin-option" data-coins="250000" data-price="3025.00">
+                    <div class="coin-left">
+                        <div class="coin-icon">C</div>
+                        <div class="coin-amount">250,000 coins</div>
+                    </div>
+                    <div class="coin-price">$3,025.00</div>
+                </div>
+                <div class="coin-option" data-coins="1000000" data-price="12100.00">
+                    <div class="coin-left">
+                        <div class="coin-icon">C</div>
+                        <div class="coin-amount">1,000,000 coins</div>
+                    </div>
+                    <div class="coin-price">$12,100.00</div>
+                </div>
+            </div>
+
+            <div class="custom-amount">
+                <label>Or enter custom amount (coins)</label>
+                <div class="custom-row">
+                    <input type="number" class="custom-input" id="customCoins" placeholder="e.g. 500000">
+                </div>
+            </div>
+
+            <button class="exchange-btn" id="exchangeBtn">Exchange</button>
+        </div>
+
+
+        <div class="page" id="page-transactions">
+            <div class="section-title">Transaction History</div>
+            <div class="tx-list" id="txList">
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-title">Sent 250,000 Coins to @daniel990</div>
+                        <div class="tx-date">25/09/2026, 23:35:28</div>
+                    </div>
+                    <div class="tx-right">
+                        <div class="tx-amount">-$3,025.00</div>
+                        <div class="tx-status">Completed</div>
+                    </div>
+                </div>
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-title">Sent 915,000 Coins to @aneedha9</div>
+                        <div class="tx-date">25/09/2026, 23:36:47</div>
+                    </div>
+                    <div class="tx-right">
+                        <div class="tx-amount">-$11,071.50</div>
+                        <div class="tx-status">Completed</div>
+                    </div>
+                </div>
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-title">Sent 150,000 Coins to @shawn99</div>
+                        <div class="tx-date">25/09/2026, 23:36:02</div>
+                    </div>
+                    <div class="tx-right">
+                        <div class="tx-amount">-$1,815.00</div>
+                        <div class="tx-status">Completed</div>
+                    </div>
+                </div>
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-title">Sent 250 Coins to @henry019</div>
+                        <div class="tx-date">25/09/2026, 23:35:16</div>
+                    </div>
+                    <div class="tx-right">
+                        <div class="tx-amount">-$3.02</div>
+                        <div class="tx-status">Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page" id="page-withdraw">
+            <div class="withdraw-card">
+                <div class="withdraw-label">Available rewards</div>
+                <div class="withdraw-amount" id="wdBalance">$8,027,116.56</div>
+                <div class="withdraw-limit">Daily withdrawal limit (StreamYuan): $1,000 / $1,000</div>
+
+                <input type="number" class="withdraw-input" id="withdrawAmount" placeholder="Enter amount">
+
+                <button class="withdraw-btn" onclick="doWithdraw()">Withdraw</button>
+            </div>
+
+            <div class="info-box">
+                Withdrawals are processed within 1–3 business days. Make sure your payment method is verified in your TikTok account settings.
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="bottom-nav">
+        <button class="bottom-nav-item active" data-page="dashboard">
+            <span class="icon">🏠</span>
+            Home
+        </button>
+        <button class="bottom-nav-item" data-page="exchange">
+            <span class="icon">💱</span>
+            Exchange
+        </button>
+        <button class="bottom-nav-item" data-page="transactions">
+            <span class="icon">📋</span>
+            History
+        </button>
+        <button class="bottom-nav-item" data-page="withdraw">
+            <span class="icon">💸</span>
+            Withdraw
+        </button>
+    </div>
+
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-check">✓</div>
+            <div class="modal-title">Exchange Completed!</div>
+            <div class="modal-desc" id="modalDesc">You exchanged for 250 Coins</div>
+            <div class="modal-details">
+                <div class="modal-row">
+                    <span class="label">Recipient</span>
+                    <span class="value" id="modalRecipient">@user</span>
+                </div>
+                <div class="modal-row">
+                    <span class="label">Coins Exchanged</span>
+                    <span class="value" id="modalCoins">250 Coins</span>
+                </div>
+                <div class="modal-row">
+                    <span class="label">Deducted Amount</span>
+                    <span class="value" id="modalAmount">$3.03</span>
+                </div>
+                <div class="modal-row">
+                    <span class="label">Time</span>
+                    <span class="value" id="modalTime">25/09/2026, 23:35</span>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="closeModal()">Done</button>
+        </div>
+    </div>
+
+
+    <div class="wd-modal-overlay" id="wdModal">
+        <div class="wd-modal">
+            <div class="wd-icon-wrap">✓</div>
+            <div class="wd-title">Withdrawal Submitted!</div>
+            <div class="wd-subtitle">Your request has been received and is being processed.</div>
+
+            <div class="wd-amount-display">
+                <div class="wd-amount-label">Amount Requested</div>
+                <div class="wd-amount-value" id="wdModalAmount">$0.00</div>
+            </div>
+
+            <div class="wd-details">
+                <div class="wd-row">
+                    <span class="wd-row-label">Reference No.</span>
+                    <span class="wd-row-value mono" id="wdModalRef">TT-XXXXXXXX</span>
+                </div>
+                <div class="wd-row">
+                    <span class="wd-row-label">Payment Method</span>
+                    <span class="wd-row-value">Bank Transfer</span>
+                </div>
+                <div class="wd-row">
+                    <span class="wd-row-label">Status</span>
+                    <span class="wd-row-value pending">â³ Processing</span>
+                </div>
+                <div class="wd-row">
+                    <span class="wd-row-label">Submitted</span>
+                    <span class="wd-row-value" id="wdModalTime">—</span>
+                </div>
+                <div class="wd-row">
+                    <span class="wd-row-label">Est. Arrival</span>
+                    <span class="wd-row-value" id="wdModalArrival">1–3 business days</span>
+                </div>
+                <div class="wd-row">
+                    <span class="wd-row-label">Remaining Balance</span>
+                    <span class="wd-row-value" id="wdModalBalance">$0.00</span>
+                </div>
+            </div>
+
+            <div class="wd-notice">
+                📧 A confirmation email has been sent to your registered address. Funds will arrive within 1–3 business days.
+            </div>
+
+            <button class="wd-btn" onclick="closeWdModal()">Done</button>
+        </div>
+    </div>
+
+    <script>
+        let balance = 8027116.56;
+        let selectedCoins = null;
+        let selectedPrice = null;
+
+
+        function goTo(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.page === pageId);
+            });
+            document.querySelectorAll('.bottom-nav-item').forEach(b => {
+                b.classList.toggle('active', b.dataset.page === pageId);
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        document.querySelectorAll('.nav-btn, .bottom-nav-item').forEach(btn => {
+            btn.addEventListener('click', () => goTo(btn.dataset.page));
+        });
+
+
+        document.querySelectorAll('.coin-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('.coin-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                selectedCoins = parseInt(opt.dataset.coins);
+                selectedPrice = parseFloat(opt.dataset.price);
+                document.getElementById('customCoins').value = '';
+            });
+        });
+
+
+        document.getElementById('customCoins').addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            if (val > 0) {
+                document.querySelectorAll('.coin-option').forEach(o => o.classList.remove('selected'));
+                selectedCoins = val;
+                selectedPrice = +(val * 0.0121).toFixed(2);
+            }
+        });
+
+
+        document.getElementById('usernameInput').addEventListener('input', () => {
+            document.getElementById('usernameInput').style.borderColor = '';
+            document.getElementById('usernameError').classList.remove('show');
+        });
+
+        document.getElementById('exchangeBtn').addEventListener('click', () => {
+            const usernameRaw = document.getElementById('usernameInput').value.trim();
+
+            if (!usernameRaw) {
+                const input = document.getElementById('usernameInput');
+                input.style.borderColor = '#dc2626';
+                input.focus();
+                const err = document.getElementById('usernameError');
+                err.classList.remove('show');
+                void err.offsetWidth;
+                err.classList.add('show');
+                return;
+            }
+
+            const username = usernameRaw;
+
+            if (!selectedCoins || selectedCoins <= 0) {
+                alert('Please select or enter an amount of coins.');
+                return;
+            }
+
+
+            document.getElementById('modalDesc').textContent = `You exchanged for ${selectedCoins.toLocaleString()} Coins`;
+            document.getElementById('modalRecipient').textContent = username.startsWith('@') ? username : '@' + username;
+            document.getElementById('modalCoins').textContent = selectedCoins.toLocaleString() + ' Coins';
+            document.getElementById('modalAmount').textContent = '$' + selectedPrice.toLocaleString('en-US', {minimumFractionDigits: 2});
+
+            const now = new Date();
+            document.getElementById('modalTime').textContent = now.toLocaleDateString('en-GB') + ', ' + now.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false});
+
+
+            balance -= selectedPrice;
+            updateBalances();
+
+
+            addTransaction(username, selectedCoins, selectedPrice);
+
+
+            document.getElementById('modal').classList.add('show');
+        });
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('show');
+            selectedCoins = null;
+            selectedPrice = null;
+            document.querySelectorAll('.coin-option').forEach(o => o.classList.remove('selected'));
+            document.getElementById('customCoins').value = '';
+            document.getElementById('usernameInput').value = '';
+        }
+
+        function updateBalances() {
+            const formatted = balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            const coins = Math.round(balance * 82.5);
+
+            document.getElementById('dashBalance').textContent = '$' + formatted;
+            document.getElementById('dashApprox').textContent = '≈ ' + coins.toLocaleString() + ' Coins';
+            document.getElementById('exBalance').textContent = '$' + formatted;
+            document.getElementById('exApprox').textContent = '≈ ' + coins.toLocaleString() + ' Coins';
+            document.getElementById('wdBalance').textContent = '$' + formatted;
+        }
+
+        function addTransaction(user, coins, price) {
+            const now = new Date();
+            const timeStr = now.toLocaleDateString('en-GB') + ', ' + now.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false});
+            const uname = user.startsWith('@') ? user : '@' + user;
+
+
+            const recentHtml = `
+                <div class="recent-item">
+                    <div class="recent-left">
+                        <div class="recent-user">${uname}</div>
+                        <div class="recent-time">${timeStr.slice(0, 16)}</div>
+                    </div>
+                    <div class="recent-amount">-${coins.toLocaleString()} Coins</div>
+                </div>`;
+            document.getElementById('recentList').insertAdjacentHTML('afterbegin', recentHtml);
+
+
+            const txHtml = `
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-title">Sent ${coins.toLocaleString()} Coins to ${uname}</div>
+                        <div class="tx-date">${timeStr}</div>
+                    </div>
+                    <div class="tx-right">
+                        <div class="tx-amount">-$${price.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                        <div class="tx-status">Completed</div>
+                    </div>
+                </div>`;
+            document.getElementById('txList').insertAdjacentHTML('afterbegin', txHtml);
+        }
+
+        function doWithdraw() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid withdrawal amount.');
+                return;
+            }
+            if (amount > balance) {
+                alert('Insufficient balance.');
+                return;
+            }
+
+
+            balance -= amount;
+            updateBalances();
+            document.getElementById('withdrawAmount').value = '';
+
+
+            const ref = 'TT-' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.floor(1000 + Math.random() * 9000);
+
+
+            const arrival = estimateArrival(1, 3);
+
+
+            const now = new Date();
+            const timeStr = now.toLocaleDateString('en-GB') + ', ' + now.toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false});
+            document.getElementById('wdModalAmount').textContent = '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('wdModalRef').textContent = ref;
+            document.getElementById('wdModalTime').textContent = timeStr;
+            document.getElementById('wdModalArrival').textContent = arrival;
+            document.getElementById('wdModalBalance').textContent = '$' + balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+
+            document.getElementById('wdModal').classList.add('show');
+        }
+
+        function estimateArrival(minDays, maxDays) {
+            const today = new Date();
+            let start = new Date(today);
+            let end = new Date(today);
+
+            let addedMin = 0, addedMax = 0;
+            while (addedMin < minDays) {
+                start.setDate(start.getDate() + 1);
+                if (start.getDay() !== 0 && start.getDay() !== 6) addedMin++;
+            }
+            while (addedMax < maxDays) {
+                end.setDate(end.getDate() + 1);
+                if (end.getDay() !== 0 && end.getDay() !== 6) addedMax++;
+            }
+
+            const fmt = (d) => d.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+            if (fmt(start) === fmt(end)) return fmt(start);
+            return fmt(start) + ' – ' + fmt(end);
+        }
+
+        function closeWdModal() {
+            document.getElementById('wdModal').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
