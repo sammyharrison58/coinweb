@@ -306,7 +306,10 @@
     </div>
 
     <script>
-        let balance = 8027116.56;
+        const storedBalance = localStorage.getItem('rewardsBalance');
+        const storedCoins = localStorage.getItem('rewardsCoins');
+        let balance = storedBalance !== null && Number.isFinite(Number(storedBalance)) ? Number(storedBalance) : 8027116.56;
+        let totalCoins = storedCoins !== null && Number.isFinite(Number(storedCoins)) ? Number(storedCoins) : 661300811;
         let selectedCoins = null;
         let selectedPrice = null;
 
@@ -377,6 +380,11 @@
                 return;
             }
 
+            if (selectedCoins > totalCoins || selectedPrice > balance) {
+                alert('Insufficient balance.');
+                return;
+            }
+
 
             document.getElementById('modalDesc').textContent = `You exchanged for ${selectedCoins.toLocaleString()} Coins`;
             document.getElementById('modalRecipient').textContent = username.startsWith('@') ? username : '@' + username;
@@ -388,6 +396,7 @@
 
 
             balance -= selectedPrice;
+            totalCoins -= selectedCoins;
             updateBalances();
 
 
@@ -408,13 +417,15 @@
 
         function updateBalances() {
             const formatted = balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            const coins = Math.round(balance * 82.5);
+            const coins = totalCoins;
 
             document.getElementById('dashBalance').textContent = '$' + formatted;
             document.getElementById('dashApprox').textContent = '≈ ' + coins.toLocaleString() + ' Coins';
             document.getElementById('exBalance').textContent = '$' + formatted;
             document.getElementById('exApprox').textContent = '≈ ' + coins.toLocaleString() + ' Coins';
             document.getElementById('wdBalance').textContent = '$' + formatted;
+            localStorage.setItem('rewardsBalance', String(balance));
+            localStorage.setItem('rewardsCoins', String(totalCoins));
         }
 
         function addTransaction(user, coins, price) {
@@ -459,8 +470,15 @@
                 return;
             }
 
+            const coinsToDeduct = Math.round(amount * 82.5);
+            if (coinsToDeduct > totalCoins) {
+                alert('Insufficient coin balance.');
+                return;
+            }
+
 
             balance -= amount;
+            totalCoins -= coinsToDeduct;
             updateBalances();
             document.getElementById('withdrawAmount').value = '';
 
@@ -506,6 +524,8 @@
         function closeWdModal() {
             document.getElementById('wdModal').classList.remove('show');
         }
+
+        updateBalances();
     </script>
 </body>
 </html>
